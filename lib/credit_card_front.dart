@@ -12,7 +12,7 @@ class CreditCardFront extends StatelessWidget {
       height: 220,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.blue
+        color: Colors.black
       ),
 
       padding: const EdgeInsets.all(20),

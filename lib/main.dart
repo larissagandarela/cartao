@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swap_hiring/card_widget.dart';
+import 'package:cartao/card_widget.dart';
 
 void main() {
   runApp(const MyApp());

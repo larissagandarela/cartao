@@ -11,7 +11,7 @@ class CreditCardBack extends StatelessWidget {
       height: 220,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.blue,
+        color: Colors.black,
       ),
       child: LayoutBuilder(
         builder: (_, constraints){
@@ -22,7 +22,7 @@ class CreditCardBack extends StatelessWidget {
               ),
               Container(
                 height: 45,
-                color: Colors.black,
+                color: Colors.grey[800],
               ),
               const SizedBox(
                 height: 20,
@@ -32,12 +32,12 @@ class CreditCardBack extends StatelessWidget {
                   Container(
                     width: constraints.maxWidth * .85,
                     height: 40,
-                    color: Colors.grey,
+                    color: Colors.grey[500],
                   ),
                   Container(
                     width: constraints.maxWidth * .15,
                     height: 40,
-                    color: Colors.white,
+                    color: Colors.grey[300],
                     child: const Center(child: Text('***'),
                     ),
                   ),
