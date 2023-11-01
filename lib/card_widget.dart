@@ -5,6 +5,7 @@ import 'package:cartao/card_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:cartao/credit_card_back.dart';
 import 'package:cartao/credit_card_front.dart';
+import 'package:flutter/services.dart';
 
 class CardWidget extends StatefulWidget {
   const CardWidget({Key? key}) : super(key: key);
@@ -67,6 +68,11 @@ class _CardWidgetState extends State<CardWidget> with SingleTickerProviderStateM
   }
 
 
+  // controladores do formulário
+  final TextEditingController _cardNumberController = TextEditingController();
+  final TextEditingController _cardholderNameController = TextEditingController();
+  final TextEditingController _expirationDateController = TextEditingController();
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +91,46 @@ class _CardWidgetState extends State<CardWidget> with SingleTickerProviderStateM
                   ),
                 CardAnimation(
                   animation: _frontAnimation,
-                  child: const CreditCardFront()
+                  child: CreditCardFront(
+                    cardNumber: _cardNumberController.text,
+                    cardholderName: _cardholderNameController.text,
+                    expirationDate: _expirationDateController.text,
                   ),
+                ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _cardNumberController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    decoration: const InputDecoration(
+                      labelText: 'Card Number',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _cardholderNameController,
+                    decoration: const InputDecoration(
+                      labelText: 'Name',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _expirationDateController,
+                    keyboardType: TextInputType.datetime,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4),
+                    ],
+                    decoration: const InputDecoration(
+                      labelText: 'Expiration Date (MM/YY)',
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -101,7 +144,7 @@ class _CardWidgetState extends State<CardWidget> with SingleTickerProviderStateM
                   }
                 });
               },
-              child: Text('Virar'),
+              child: Text('girar o cartão'),
             ),
           ], 
         ),
